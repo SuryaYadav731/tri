@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* LIGHT MODE: White, Dark Gray, Blue, Orange, Red */
+    --color-bg: 245 245 245;
+    --color-card: 255 255 255;
+    --color-border: 200 200 200;
+    --color-primary: 0 80 200;
+    --color-secondary: 50 50 50;
+    --color-warning: 255 140 0;
+    --color-danger: 220 20 60;
+    --color-success: 0 150 0;
+    --color-text: 30 30 30;
+    --color-text-muted: 100 100 100;
+  }
+
+  .dark {
+    /* DARK MODE: Black, Green, Cyan, Yellow, Red */
+    --color-bg: 5 5 5;
+    --color-card: 15 20 15;
+    --color-border: 0 100 50;
+    --color-primary: 0 255 0;
+    --color-secondary: 0 255 255;
+    --color-warning: 255 255 0;
+    --color-danger: 255 50 50;
+    --color-success: 0 255 0;
+    --color-text: 0 255 0;
+    --color-text-muted: 0 150 50;
+  }
+
+  body {
+    @apply bg-tactical-bg text-tactical-text font-mono overflow-hidden m-0 p-0 transition-colors duration-300;
+  }
+}
+
+.solid-panel {
+  @apply bg-tactical-card border border-tactical-border shadow-none transition-colors duration-300;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-tactical-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-tactical-border rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-tactical-primary;
+}
+
+@keyframes pulse-radar {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.dark .marker-pulse {
+  animation: pulse-radar-dark 1.5s infinite;
+}
+.marker-pulse {
+  animation: pulse-radar 1.5s infinite;
+  border-radius: 50%;
+}
+
+@keyframes pulse-radar-dark {
+  0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 77, 77, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+
+@keyframes pulse-fast {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.9); }
+  50% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+@keyframes pulse-fast-dark {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.9); }
+  50% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+.marker-pulse-fast {
+  animation: pulse-fast 0.5s infinite;
+  border-radius: 50%;
+}
+.dark .marker-pulse-fast {
+  animation: pulse-fast-dark 0.5s infinite;
+}
+
+.leaflet-container {
+  background-color: var(--color-bg) !important;
+  font-family: "Share Tech Mono", monospace !important;
+}
+.leaflet-bar a, .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  @apply bg-tactical-card text-tactical-text border-tactical-border !important;
+}
+.leaflet-bar a:hover {
+  @apply bg-tactical-primary text-white !important;
+}
